@@ -293,6 +293,7 @@ define Device/zyxel_nbg7815
 	DEVICE_DTS_CONFIG := config@nbg7815
 	SOC := ipq8074
 	DEVICE_PACKAGES += ipq-wifi-zyxel_nbg7815 kmod-ath11k-pci \
-		kmod-hwmon-tmp103 kmod-bluetooth kmod-leds-lp5569
+		kmod-hwmon-tmp103 kmod-bluetooth kmod-leds-lp5569 \
+		kmod-hwmon-gpiofan
 endef
 TARGET_DEVICES += zyxel_nbg7815
