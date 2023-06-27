@@ -1,0 +1,16 @@
+--- a/drivers/net/phy/aquantia_hwmon.c
++++ b/drivers/net/phy/aquantia_hwmon.c
+@@ -38,11 +38,11 @@ static umode_t aqr_hwmon_is_visible(cons
+ 
+ 	switch (attr) {
+ 	case hwmon_temp_input:
+-	case hwmon_temp_min_alarm:
+-	case hwmon_temp_max_alarm:
+ 	case hwmon_temp_lcrit_alarm:
+ 	case hwmon_temp_crit_alarm:
+ 		return 0444;
++	case hwmon_temp_min_alarm:
++	case hwmon_temp_max_alarm:
+ 	case hwmon_temp_min:
+ 	case hwmon_temp_max:
+ 	case hwmon_temp_lcrit:
