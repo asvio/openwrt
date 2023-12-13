@@ -62,8 +62,8 @@
 				};
 
 				aqr_thermal_active: aqr-thermal-active {
-					temperature = <90000>;
-					hysteresis = <5000>;
+					temperature = <82000>;
+					hysteresis = <7000>;
 					type = "active";
 				};
 			};
@@ -81,7 +81,7 @@
 &cpu0_thermal {
 	trips {
 		cpu0_active: cpu0-active {
-			temperature = <70000>;
+			temperature = <80000>;
 			hysteresis = <5000>;
 			type = "active";
 		};
@@ -98,7 +98,7 @@
 &cpu1_thermal {
 	trips {
 		cpu1_active: cpu1-active {
-			temperature = <70000>;
+			temperature = <80000>;
 			hysteresis = <5000>;
 			type = "active";
 		};
@@ -115,7 +115,7 @@
 &cpu2_thermal {
 	trips {
 		cpu2_active: cpu2-active {
-			temperature = <70000>;
+			temperature = <90000>;
 			hysteresis = <5000>;
 			type = "active";
 		};
@@ -132,7 +132,7 @@
 &cpu3_thermal {
 	trips {
 		cpu3_active: cpu3-active {
-			temperature = <70000>;
+			temperature = <80000>;
 			hysteresis = <5000>;
 			type = "active";
 		};
@@ -149,7 +149,7 @@
 &cluster_thermal {
 	trips {
 		cluster_active: cluster-active {
-			temperature = <70000>;
+			temperature = <80000>;
 			hysteresis = <5000>;
 			type = "active";
 		};
