@@ -51,6 +51,7 @@
 	thermal-zones {
 		aqr-thermal {
 			polling-delay = <1000>;
+			polling-delay-passive = <1000>;
 			thermal-sensors = <&aqr113c>, <&tmp103>;
 
 			trips {
