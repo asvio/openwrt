@@ -6,6 +6,7 @@
  *
  * Contact: Samu Onkalo <samu.p.onkalo@nokia.com>
  *          Milo(Woogyom) Kim <milo.kim@ti.com>
+ *          Karol Przybylski <itor@o2.pl>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -36,9 +37,8 @@
 
 #define CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS 1
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
+
 #define LP5569_PROGRAM_PAGES		16
-#endif
 #define LP5569_PROGRAM_LENGTH		32	/* bytes */
 /* Memory is used like this:
    0x00 engine 1 program
@@ -163,7 +163,6 @@ static const u8 mode_fast_blinking_b[] = {
 	0x01, 0x24, 0x9C, 0x00, 0x40, 0xFF, 0x50, 0x00, 0x40, 0x00, 0x50, 0x00, 0xA0, 0x01,
 };
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 static const u8 mode_booting1[] = {
 	0x00, 0x07, 0x00, 0x38, 0x01, 0xC0, 0x9F, 0x80, 0x40, 0x00, 0x6C, 0x00, 0x6C, 0x00, 0x06, 0xFF,
 	0x6C, 0x00, 0x05, 0xFF, 0x6C, 0x00, 0xA0, 0x02, 0x9F, 0x81, 0x40, 0x00, 0x6C, 0x00, 0x06, 0xFF,
@@ -247,134 +246,115 @@ static const u8 mode_reset[] = {
 static const u8 mode_error[] = {
 	0x01, 0xB6, 0x00, 0x49, 0x9F, 0x80, 0x40, 0x00, 0x9F, 0x81, 0x40, 0xFF, 0xC0, 0x00,
 };
-#endif
 
 struct lp55xx_predef_pattern nbg6818_leds_patterns[] = {
 	{
 	  .r = mode_slow_blinking_w,
 	  .size_r = ARRAY_SIZE(mode_slow_blinking_w),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_fast_blinking_w,
 	  .size_r = ARRAY_SIZE(mode_fast_blinking_w),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_slow_blinking_r,
 	  .size_r = ARRAY_SIZE(mode_slow_blinking_r),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_fast_blinking_r,
 	  .size_r = ARRAY_SIZE(mode_fast_blinking_r),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_slow_blinking_g,
 	  .size_r = ARRAY_SIZE(mode_slow_blinking_g),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_fast_blinking_g,
 	  .size_r = ARRAY_SIZE(mode_fast_blinking_g),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_slow_blinking_b,
 	  .size_r = ARRAY_SIZE(mode_slow_blinking_b),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
 	{
 	  .r = mode_fast_blinking_b,
 	  .size_r = ARRAY_SIZE(mode_fast_blinking_b),
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	  .eng_start_addr = 0,
-#endif
+//	  .eng_start_addr = 0,
 	},
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	{ // 9
 	  .r = mode_booting1,
 	  .size_r = ARRAY_SIZE(mode_booting1),
-	  .eng_start_addr = 0x150C03,
+//	  .eng_start_addr = 0x150C03,
 	},
 	{ // 10
 	  .r = mode_booting2,
 	  .size_r = ARRAY_SIZE(mode_booting2),
-	  .eng_start_addr = 0x150C03,
+//	  .eng_start_addr = 0x150C03,
 	},
 	{ // 11
 	  .r = mode_bluetooth_ready,
 	  .size_r = ARRAY_SIZE(mode_bluetooth_ready),
-	  .eng_start_addr = 0x2,
+//	  .eng_start_addr = 0x2,
 	},
 	{ // 12
 	  .r = mode_bluetooth_configuring1,
 	  .size_r = ARRAY_SIZE(mode_bluetooth_configuring1),
-	  .eng_start_addr = 0x1C1106,
+//	  .eng_start_addr = 0x1C1106,
 	},
 	{ // 13
 	  .r = mode_bluetooth_configuring2,
 	  .size_r = ARRAY_SIZE(mode_bluetooth_configuring1),
-	  .eng_start_addr = 0x1C1106,
+//	  .eng_start_addr = 0x1C1106,
 	},
 	{ // 14
 	  .r = mode_ready1,
 	  .size_r = ARRAY_SIZE(mode_ready1),
-	  .eng_start_addr = 0x1406,
+//	  .eng_start_addr = 0x1406,
 	},
 	{ // 15
 	  .r = mode_ready2,
 	  .size_r = ARRAY_SIZE(mode_ready2),
-	  .eng_start_addr = 0x1206,
+//	  .eng_start_addr = 0x1206,
 	},
 	{ // 16
 	  .r = mode_wps1,
 	  .size_r = ARRAY_SIZE(mode_wps1),
-	  .eng_start_addr = 0x1C1106,
+//	  .eng_start_addr = 0x1C1106,
 	},
 	{ // 17
 	  .r = mode_wps2,
 	  .size_r = ARRAY_SIZE(mode_wps2),
-	  .eng_start_addr = 0x1C1106,
+//	  .eng_start_addr = 0x1C1106,
 	},
 	{ // 18
 	  .r = mode_fw_upgrade1,
 	  .size_r = ARRAY_SIZE(mode_fw_upgrade1),
-	  .eng_start_addr = 0xA02,
+//	  .eng_start_addr = 0xA02,
 	},
 	{ // 19
 	  .r = mode_fw_upgrade2,
 	  .size_r = ARRAY_SIZE(mode_fw_upgrade2),
-	  .eng_start_addr = 0xA02,
+//	  .eng_start_addr = 0xA02,
 	},
 	{ // 20
 	  .r = mode_reset,
 	  .size_r = ARRAY_SIZE(mode_reset),
-	  .eng_start_addr = 0x1,
+//	  .eng_start_addr = 0x1,
 	},
 	{ // 21
 	  .r = mode_error,
 	  .size_r = ARRAY_SIZE(mode_error),
-	  .eng_start_addr = 0x2,
+//	  .eng_start_addr = 0x2,
 	},
-#endif
 };
-#endif // CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS
+#endif
 
 
 static int lp5569_init_program_engine(struct lp55xx_chip *chip);
@@ -434,36 +414,6 @@ static int lp5569_post_init_device(struct lp55xx_chip *chip)
 
 static void lp5569_load_engine(struct lp55xx_chip *chip)
 {
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	unsigned int eng_start_addr = chip->pdata->eng_start_addr;
-	u8 mask = 0;
-	u8 val = 0;
-
-	// always enable eng1
-	mask |= LP5569_MODE_ENG1_M;
-	val |= LP5569_LOAD_ENG1;
-	lp55xx_write(chip, LP5569_REG_CH1_PROG_START, (eng_start_addr & 0xFF));
-	// printk(KERN_INFO "lp5569_load_engine eng1_addr = %X\n", (eng_start_addr & 0xFF));
-
-	if ((eng_start_addr >> 8) & 0xFF) {
-		mask |= LP5569_MODE_ENG2_M;
-		val |= LP5569_LOAD_ENG2;
-		lp55xx_write(chip, LP5569_REG_CH2_PROG_START, ((eng_start_addr >> 8) & 0xFF));
-		// printk(KERN_INFO "lp5569_load_engine eng2_addr = %X\n", ((eng_start_addr >> 8) & 0xFF));
-	}
-
-	if ((eng_start_addr >> 16) & 0xFF) {
-		mask |= LP5569_MODE_ENG3_M;
-		val |= LP5569_LOAD_ENG3;
-		lp55xx_write(chip, LP5569_REG_CH3_PROG_START, ((eng_start_addr >> 16) & 0xFF));
-		// printk(KERN_INFO "lp5569_load_engine eng3_addr = %X\n", ((eng_start_addr >> 16) & 0xFF));
-	}
-
-	// printk(KERN_INFO "lp5569_load_engine mask = %X, val = %X\n", mask, val);
-	lp55xx_update_bits(chip, LP5569_REG_OP_MODE, mask, val);
-
-	lp5569_wait_opmode_done();
-#else
 	enum lp55xx_engine_index idx = chip->engine_idx;
 	static const u8 mask[] = {
 		[LP55XX_ENGINE_1] = LP5569_MODE_ENG1_M,
@@ -480,7 +430,7 @@ static void lp5569_load_engine(struct lp55xx_chip *chip)
 	lp55xx_update_bits(chip, LP5569_REG_OP_MODE, mask[idx], val[idx]);
 
 	lp5569_wait_opmode_done();
-#endif
+//#endif
 }
 
 static void lp5569_load_engine_and_select_page(struct lp55xx_chip *chip)
@@ -634,13 +584,9 @@ out:
 static int lp5569_update_program_memory(struct lp55xx_chip *chip,
 					const u8 *data, size_t size)
 {
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	u8 pattern[LP5569_PROGRAM_LENGTH * LP5569_PROGRAM_PAGES] = {0};
 	int update_size;
 	int j = 0;
-#else
-	u8 pattern[LP5569_PROGRAM_LENGTH] = {0};
-#endif
 	unsigned int cmd;
 	char c[3];
 	int nrchars;
@@ -648,7 +594,6 @@ static int lp5569_update_program_memory(struct lp55xx_chip *chip,
 	int offset = 0;
 	int i = 0;
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	/* clear program memory before updating */
 	for (j = 0; j < LP5569_PROGRAM_PAGES; j++) {
 		lp55xx_write(chip, LP5569_REG_PROG_PAGE_SEL, j);
@@ -656,13 +601,10 @@ static int lp5569_update_program_memory(struct lp55xx_chip *chip,
 			lp55xx_write(chip, LP5569_REG_PROG_MEM + i, 0);
 	}
 	i = 0;
-#endif
+		printk(KERN_ERR "lp5569_update_program_memory \n");
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	while ((offset < size - 1) && (i < LP5569_PROGRAM_LENGTH * LP5569_PROGRAM_PAGES * 2)) {
-#else
-	while ((offset < size - 1) && (i < LP5569_PROGRAM_LENGTH)) {
-#endif
+	
 		/* separate sscanfs because length is working only for %s */
 		ret = sscanf(data + offset, "%2s%n ", c, &nrchars);
 		if (ret != 1)
@@ -671,6 +613,8 @@ static int lp5569_update_program_memory(struct lp55xx_chip *chip,
 		ret = sscanf(c, "%2x", &cmd);
 		if (ret != 1)
 			goto err;
+
+		printk(KERN_ERR "update_pattern %2x \n",cmd);
 
 		pattern[i] = (u8)cmd;
 		offset += nrchars;
@@ -681,30 +625,19 @@ static int lp5569_update_program_memory(struct lp55xx_chip *chip,
 	if (i % 2)
 		goto err;
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	update_size = i;
 	j = 0;
-	// printk(KERN_INFO "lp5569_update_program_memory\n");
-	// printk(KERN_INFO "LP5569_REG_PROG_PAGE_SEL %X %d\n", LP5569_REG_PROG_PAGE_SEL, j);
+	 printk(KERN_ERR "LP5569_REG_PROG_PAGE_SEL %X %d\n", LP5569_REG_PROG_PAGE_SEL, j);
 	lp55xx_write(chip, LP5569_REG_PROG_PAGE_SEL, j);
 	for (i = 0; i < update_size; i++) {
 		if ( (i > 0)  && !(i % LP5569_PROGRAM_LENGTH)) {
 			j++;
 			if ( j == LP5569_PROGRAM_PAGES ) break;
-			// printk(KERN_INFO "LP5569_REG_PROG_PAGE_SEL %X %d\n", LP5569_REG_PROG_PAGE_SEL, j);
 			lp55xx_write(chip, LP5569_REG_PROG_PAGE_SEL, j);
 		}
-		// printk(KERN_INFO "%X %X\n", LP5569_REG_PROG_MEM + (i - j*LP5569_PROGRAM_LENGTH), pattern[i]);
+		 printk(KERN_INFO "%X %X\n", LP5569_REG_PROG_MEM + (i - j*LP5569_PROGRAM_LENGTH), pattern[i]);
 		lp55xx_write(chip, LP5569_REG_PROG_MEM + (i - j*LP5569_PROGRAM_LENGTH), pattern[i]);
 	}
-#else
-	for (i = 0; i < LP5569_PROGRAM_LENGTH; i++) {
-		ret = lp55xx_write(chip, LP5569_REG_PROG_MEM + i, pattern[i]);
-		if (ret)
-			return -EINVAL;
-	}
-#endif
-
 	return size;
 
 err:
@@ -716,11 +649,7 @@ static void lp5569_firmware_loaded(struct lp55xx_chip *chip)
 {
 	const struct firmware *fw = chip->fw;
 
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	if (fw->size > (LP5569_PROGRAM_LENGTH * LP5569_PROGRAM_PAGES * 2)) {
-#else
-	if (fw->size > LP5569_PROGRAM_LENGTH) {
-#endif
 		dev_err(&chip->cl->dev, "firmware data size overflow: %zu\n",
 			fw->size);
 		return;
@@ -1174,13 +1103,7 @@ static int lp5569_led_brightness(struct lp55xx_led *led)
 #if defined(CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS)
 static inline bool _is_pc_overflow(struct lp55xx_predef_pattern *ptn)
 {
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
 	return (ptn->size_r >= (LP5569_PROGRAM_LENGTH * LP5569_PROGRAM_PAGES));
-#else
-	return (ptn->size_r >= LP5569_PROGRAM_LENGTH ||
-		ptn->size_g >= LP5569_PROGRAM_LENGTH ||
-		ptn->size_b >= LP5569_PROGRAM_LENGTH);
-#endif
 }
 
 #define LP5569_PATTERN_OFF 0
@@ -1188,6 +1111,7 @@ static int lp5569_run_predef_led_pattern(struct lp55xx_chip *chip, int mode)
 {
 	struct lp55xx_predef_pattern *ptn;
 	int i;
+  int j = 0;
 
 	// lp5569_run_engine(chip, false);
 	lp5569_stop_all_engines(chip);
@@ -1204,29 +1128,16 @@ static int lp5569_run_predef_led_pattern(struct lp55xx_chip *chip, int mode)
 
 	// alwayse use engine1
 	chip->engine_idx = LP55XX_ENGINE_1;
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	chip->pdata->eng_start_addr = ptn->eng_start_addr;
-#endif
 	lp5569_load_engine(chip);
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	int j = 0;
-	// printk(KERN_INFO "lp5569_run_predef_led_pattern\n");
-	// printk(KERN_INFO "LP5569_REG_PROG_PAGE_SEL %X %d\n", LP5569_REG_PROG_PAGE_SEL, j);
 	lp55xx_write(chip, LP5569_REG_PROG_PAGE_SEL, j);
 	for (i = 0; i < ptn->size_r; i++) {
 		if ( (i > 0)  && !(i % LP5569_PROGRAM_LENGTH)) {
 			j++;
 			if ( j == LP5569_PROGRAM_PAGES ) break;
-			// printk(KERN_INFO "LP5569_REG_PROG_PAGE_SEL %X %d\n", LP5569_REG_PROG_PAGE_SEL, j);
 			lp55xx_write(chip, LP5569_REG_PROG_PAGE_SEL, j);
 		}
-		// printk(KERN_INFO "%X %X\n", LP5569_REG_PROG_MEM + (i - j*LP5569_PROGRAM_LENGTH), ptn->r[i]);
 		lp55xx_write(chip, LP5569_REG_PROG_MEM + (i - j*LP5569_PROGRAM_LENGTH), ptn->r[i]);
 	}
-#else
-	for (i = 0; i<ptn->size_r; i++)
-		lp55xx_write(chip, LP5569_REG_PROG_MEM + i, ptn->r[i]);
-#endif
 
 	/* Run engines */
 #if defined(LEDS_LP5569_DISABLE_RUN_PREDEFINED_PATTERNS)
@@ -1264,38 +1175,7 @@ static ssize_t lp5569_store_pattern(struct device *dev,
 	return len;
 }
 static LP55XX_DEV_ATTR_WO(led_pattern, lp5569_store_pattern);
-#endif // CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS
-
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-static ssize_t lp5569_show_eng_start_addr(struct device *dev,
-				struct device_attribute *attr,
-				char *buf)
-{
-	struct lp55xx_led *led = i2c_get_clientdata(to_i2c_client(dev));
-	struct lp55xx_chip *chip = led->chip;
-
-	return sprintf(buf, "0x%X\n", chip->pdata->eng_start_addr);
-}
-
-static ssize_t lp5569_store_eng_start_addr(struct device *dev,
-				struct device_attribute *attr,
-				const char *buf, size_t len)
-{
-	struct lp55xx_led *led = i2c_get_clientdata(to_i2c_client(dev));
-	struct lp55xx_chip *chip = led->chip;
-	unsigned int addr;
-	int ret;
-
-	ret = kstrtoul(buf, 16, &addr);
-	if (ret)
-		return ret;
-
-	chip->pdata->eng_start_addr = addr;
-
-	return len;
-}
-static LP55XX_DEV_ATTR_RW(eng_start_addr, lp5569_show_eng_start_addr, lp5569_store_eng_start_addr);
-#endif // LEDS_LP5569_EXTENDED_FW
+#endif
 
 static LP55XX_DEV_ATTR_RW(engine1_mode, show_engine1_mode, store_engine1_mode);
 static LP55XX_DEV_ATTR_RW(engine2_mode, show_engine2_mode, store_engine2_mode);
@@ -1331,12 +1211,7 @@ static struct attribute *lp5569_attributes[] = {
 	&dev_attr_master_fader2.attr,
 	&dev_attr_master_fader3.attr,
 	&dev_attr_master_fader_leds.attr,
-#if defined(CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS)
 	&dev_attr_led_pattern.attr,
-#endif
-#if defined(CONFIG_LEDS_LP5569_EXTENDED_FW)
-	&dev_attr_eng_start_addr.attr,
-#endif
 	NULL,
 };
 
@@ -1398,10 +1273,8 @@ static int lp5569_probe(struct i2c_client *client,
 	if (!led)
 		return -ENOMEM;
 
-#if defined(CONFIG_LEDS_LP5569_PREDEFINED_PATTERNS)
 	pdata->patterns = nbg6818_leds_patterns;
 	pdata->num_patterns = ARRAY_SIZE(nbg6818_leds_patterns);
-#endif
 
 	chip->cl = client;
 	chip->pdata = pdata;
@@ -1476,5 +1349,6 @@ module_i2c_driver(lp5569_driver);
 
 MODULE_AUTHOR("Mathias Nyman <mathias.nyman@nokia.com>");
 MODULE_AUTHOR("Milo Kim <milo.kim@ti.com>");
+MODULE_AUTHOR("Karol Przybylski <itor@o2.pl>");
 MODULE_DESCRIPTION("LP5569 LED engine");
 MODULE_LICENSE("GPL");
