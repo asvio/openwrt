@@ -65,7 +65,7 @@ Signed-off-by: Vicentiu Galanopulo <vicentiu.galanopulo@remote-tech.co.uk>
 
 --- a/drivers/leds/Kconfig
 +++ b/drivers/leds/Kconfig
-@@ -865,6 +865,16 @@ config LEDS_LM36274
+@@ -875,6 +875,16 @@ config LEDS_LM36274
  	  Say Y to enable the LM36274 LED driver for TI LMU devices.
  	  This supports the LED device LM36274.
  
@@ -84,7 +84,7 @@ Signed-off-by: Vicentiu Galanopulo <vicentiu.galanopulo@remote-tech.co.uk>
  	depends on LEDS_CLASS
 --- a/drivers/leds/Makefile
 +++ b/drivers/leds/Makefile
-@@ -78,6 +78,7 @@ obj-$(CONFIG_LEDS_POWERNV)		+= leds-powe
+@@ -79,6 +79,7 @@ obj-$(CONFIG_LEDS_POWERNV)		+= leds-powe
  obj-$(CONFIG_LEDS_PWM)			+= leds-pwm.o
  obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
  obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
